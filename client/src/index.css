@@ -60,6 +60,7 @@ ul.nav.navbar-nav li{
   display: flex;
   align-items: flex-start;
   padding: 7px 20px 12px;
+  width: 130%;
 }
 
 #messages:not(.no-hover) .list-group-item:hover{
@@ -67,11 +68,15 @@ ul.nav.navbar-nav li{
 }
 
 .timeline-image {
-  height: 48px;
-  width: 48px;
+  height: 85px;
+  width: 85px;
   margin: 2px 30px 10px 10px;
+  border-radius: 9999px;
 }
 
+.img-thumbnail{
+  border-radius: 9999px;
+}
 .btn:hover {
   cursor: pointer;
 }
@@ -87,4 +92,57 @@ a.btn.btn-danger:hover{
 
 .btn-primary.auth-btn{
   margin-top: 20px;
+}
+
+.message-area{
+  width: 1000px;
+}
+
+.submitbtn{
+  margin-top: 20px;
+  background-color: rgb(29, 161, 242);
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+.list-group-item .deletebtn{
+  color: white;
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+.fa-heart{
+  color:rgb(29, 161, 242);
+}
+
+.likeCount{
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.userProfile{
+  background: white;
+  width: 150%;
+}
+.info {
+  text-align: center;
+  padding-top: 10%;
+  margin: 0 auto;
+  width: 70%;
+  padding-bottom: 10%;
+}
+
+.username{
+  color: rgb(29, 161, 242);
+  margin-top: 15%;
+  margin-bottom: 15%;
+}
+
+.fa-calendar-alt{
+  margin-right: 5%;
+  color: rgb(29, 161, 242);
 }

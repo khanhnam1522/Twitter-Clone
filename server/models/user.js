@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     profileImageUrl: {
         type: String
     },
+    created: {
+        type: Date,
+        default: Date.now
+    },
     messages: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Message"

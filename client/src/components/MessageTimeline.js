@@ -3,9 +3,10 @@ import MessageList from "../containers/MessageList"
 import UserAside from "./UserAside"
 
 const MessageTimeLine = props => {
+    console.log(props);
     return (
         <div className="row">
-            <UserAside profileImageUrl={props.profileImageUrl} username={props.username}/>
+            <UserAside profileImageUrl={props.profileImageUrl} username={props.username} created={props.created}/>
             <MessageList/>
         </div>
     )

@@ -8,10 +8,21 @@ const messageSchema = new mongoose.Schema(
             required: true,
             maxlength: 160
         },
+        created: {
+            type:Date, 
+            default: Date.now
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
-        }
+        },
+        like: {
+            type: Number,
+            default: 0
+        },
+        likedUsers: {
+            type: [String]
+        }         
     }, 
     {
         timestamps: true

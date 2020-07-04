@@ -1,27 +1,35 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {fetchMessages, removeMessage} from "../store/actions/messages"
+import {fetchMessages, removeMessage, likeMessage} from "../store/actions/messages"
 import MessageItem from "../components/MessageItem"
 
 class MessageList extends Component{
+
     componentDidMount(){
         this.props.fetchMessages();
     }
     render(){
-        const {messages, removeMessage, currentUser} = this.props;
-        let messageList = messages.map(m=>(
+        const {messages, likeMessage,removeMessage, currentUser} = this.props;
+
+        let messageList = messages.map(m=>( 
             <MessageItem 
                 key={m._id} 
                 date={m.createAt} 
+                created = {m.created}
+                like = {m.like}
                 text={m.text}
                 username={m.user.username}
+                likeMessage = {likeMessage.bind(this, m.user._id, m._id)}
                 profileImageUrl={m.user.profileImageUrl}
                 removeMessage={removeMessage.bind(this, m.user._id, m._id)}
                 isCorrectUser={currentUser === m.user._id}
+                isLiked = {m.likedUsers.includes(m.user._id) ? true : false}
+                userID = {m.user._id}
+                messageID = {m._id}
             />
         ));
         return (
-            <div className="row col-sm-8">
+            <div className="row col-8">
                 <div className="offset-1 col-sm-10">
                     <ul className="list-group" id="messages">
                         {messageList}
@@ -39,4 +47,4 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, {fetchMessages,removeMessage})(MessageList);
+export default connect(mapStateToProps, {fetchMessages,removeMessage,likeMessage})(MessageList);

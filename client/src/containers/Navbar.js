@@ -22,7 +22,7 @@ class Navbar extends Component {
                         <ul className="nav navbar-nav navbar-right">
                             <li>
                                  <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
-                                    New Message
+                                    New Tweet
                                 </Link>
                             </li>
                             <li>

@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom";
 import MessageTimeline from "./MessageTimeline"
 
-
 const Homepage = ({currentUser}) => {
     if(!currentUser.isAuthenticated){
         return (
@@ -17,7 +16,7 @@ const Homepage = ({currentUser}) => {
     }
     return (
         <div>
-            <MessageTimeline profileImageUrl={currentUser.user.profileImageUrl} username={currentUser.user.username}/>
+            <MessageTimeline profileImageUrl={currentUser.user.profileImageUrl} username={currentUser.user.username} created={currentUser.user.created}/>
         </div>
     );
 };

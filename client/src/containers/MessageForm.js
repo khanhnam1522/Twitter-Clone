@@ -25,14 +25,15 @@ class MessageForm extends Component {
                         {this.props.errors.message}
                     </div>
                 )}
-                <input 
+                <textarea 
+                    rows = "2"
                     type="text" 
                     className="form-control" 
                     value={this.state.message}
                     onChange={e => this.setState({message: e.target.value})}
                 />
-                <button type="submit" className="btn btn-success pull-right">
-                    Add my message!
+                <button type="submit" className="btn btn-primary pull-right submitbtn">
+                    Tweet!
                 </button>
             </form>
         )
