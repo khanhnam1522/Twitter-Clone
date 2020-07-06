@@ -124,6 +124,19 @@ a.btn.btn-danger:hover{
   padding-right: 2%;
 }
 
+.commentCount{
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.fa-trash-alt{
+  color: rgb(29, 161, 242);
+}
+
+.fa-comment-dots{
+  color: rgb(29, 161, 242);
+}
+
 .userProfile{
   background: white;
   width: 150%;
@@ -145,4 +158,9 @@ a.btn.btn-danger:hover{
 .fa-calendar-alt{
   margin-right: 5%;
   color: rgb(29, 161, 242);
+}
+
+.comments{
+  padding-left: 8%;
+  width:102%;
 }

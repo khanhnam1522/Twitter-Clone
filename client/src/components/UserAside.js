@@ -10,7 +10,7 @@ const UserAside = ({profileImageUrl,username, created}) => {
     ];
     const month = monthNames[date.getMonth()];
     return (
-    <aside className="col-sm-2">
+    <aside className="col-2">
         <div className="userProfile">
             <div className="info">
                 <img src={profileImageUrl || DefaultProfileImg} alt={username} className="img-thumbnail" width="400" height="400"/>

@@ -1,6 +1,6 @@
 import { apiCall } from "../../services/api";
 import {addError} from "./errors";
-import {LOAD_MESSAGES, REMOVE_MESSAGES, LIKE_MESSAGES} from "../actionTypes";
+import {LOAD_MESSAGES, REMOVE_MESSAGES, LIKE_MESSAGES, LOAD_COMMENTS} from "../actionTypes";
 
 export const loadMessages = messages => ({
     type: LOAD_MESSAGES,
@@ -15,6 +15,11 @@ export const remove = id => ({
 export const like = id => ({
     type: LIKE_MESSAGES,
     id
+})
+
+export const loadComments = comment => ({
+    type: LOAD_COMMENTS,
+    comment
 })
 
 export const likeMessage = (user_id, message_id) => {
@@ -45,10 +50,33 @@ export const fetchMessages = () => {
     };
 };
 
+export const fetchComments = (message_id,user_id) =>{
+    return dispatch => {
+        return apiCall("get", `/api/users/${user_id}/messages/${message_id}`)
+            .then((res) => { 
+                dispatch(loadComments(res));
+            })
+            .catch((err) => {
+                dispatch(addError(err.message));
+            }
+        );
+    }
+}
+
 export const postNewMessage = text => (dispatch, getState) => {
     let {currentUser} = getState();
     const id = currentUser.user.id;
     return apiCall("post", `/api/users/${id}/messages`, {text})
+        .then(res=>{})
+        .catch(err => dispatch(addError(err.message)));
+};
+
+export const postNewComment = data => (dispatch, getState) => {
+    let {currentUser} = getState();
+    const id = currentUser.user.id;
+    const message_id = data.message_id;
+    const text = data.message;
+    return apiCall("post", `/api/users/${id}/messages/${message_id}`, {text})
         .then(res=>{})
         .catch(err => dispatch(addError(err.message)));
 };

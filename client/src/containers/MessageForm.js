@@ -29,6 +29,7 @@ class MessageForm extends Component {
                     rows = "2"
                     type="text" 
                     className="form-control" 
+                    placeholder="What's happening?"
                     value={this.state.message}
                     onChange={e => this.setState({message: e.target.value})}
                 />

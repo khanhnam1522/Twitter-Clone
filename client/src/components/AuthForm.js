@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import logo from "../images/logo.png"
 
 class AuthForm extends Component {
     constructor(props){
@@ -41,6 +42,7 @@ class AuthForm extends Component {
                 <div className="row justify-content-md-center text-center">
                     <div className="col-md-6">
                         <form onSubmit={this.handleSubmit}>
+                            <img src={logo} alt="logo" height="200" weight="200" ></img>
                             <h2>{heading}</h2>
                             {errors.message && <div className="alert alert-danger">{errors.message}</div>}
                             <label htmlFor="email">Email:</label>
@@ -84,7 +86,7 @@ class AuthForm extends Component {
                                     />                                    
                                 </div>
                             )}
-                            <button type="submit" className="btn btn-primary btn-block btn-lg auth-btn">
+                            <button type="submit" className="btn btn-primary btn-block btn-lg auth-btn submitbtn">
                                 {buttonText}
                             </button>
                         </form>

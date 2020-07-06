@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("./user");
+const Comments = require("./comment");
 
 const messageSchema = new mongoose.Schema(
     {
@@ -22,7 +23,11 @@ const messageSchema = new mongoose.Schema(
         },
         likedUsers: {
             type: [String]
-        }         
+        },
+        comments: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
+        }]
     }, 
     {
         timestamps: true

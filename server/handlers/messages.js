@@ -23,7 +23,19 @@ exports.createMessage = async function(req,res,next){
 // GET - /api/users/:id/messages/:message_id
 exports.getMessage = async function(req,res,next){
     try {
-        let message = await db.Message.find(req.params.message_id);
+        let message = await db.Message.findById(req.params.message_id)            
+        .populate("user", {
+           username: true,
+           profileImageUrl: true
+        })
+        .populate({
+            path: "comments",
+            model: "Comment",
+            populate: {
+                path: "user",
+                model: "User"
+            }
+        })
         return res.status(200).json(message);
     } catch(err) {
         return next(err);
@@ -64,14 +76,24 @@ exports.likeMessage = async function(req,res,next){
 }
 
 // POST /api/users/:id/messages/:message_id
-export.postComment = async function(req,res,next){
+exports.postComment = async function(req,res,next){
     try{
-        let message = await db.Message.create({
+        let comment = await db.Comment.create({
             text: req.body.text,
             user: req.params.id
+            // message: req.params.message_id
         });
-        let foundUser = await db.Message.findById(req.params.message_id);
-        return res.status(200).json();
+        let foundUser = await db.User.findById(req.params.id);
+        let foundMessage = await db.Message.findById(req.params.message_id);
+        foundMessage.comments.push(comment);
+        await foundMessage.save();
+        foundUser.comments.push(comment);
+        await foundUser.save();
+        let foundComment = await (await db.Comment.findById(comment._id)).populated("user", {
+            username: true,
+            profileImageUrl: true
+        });
+        return res.status(200).json(foundComment);
     }catch (err) {
         return next(err)
     }

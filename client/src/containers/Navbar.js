@@ -22,11 +22,13 @@ class Navbar extends Component {
                         <ul className="nav navbar-nav navbar-right">
                             <li>
                                  <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
-                                    New Tweet
+                                        New Tweet
                                 </Link>
                             </li>
                             <li>
-                                <a href="/#" onClick={this.logout}>Log Out</a>
+                                <a href="/#" onClick={this.logout}>
+                                        Log Out
+                                </a>
                             </li>
                             
                         </ul>

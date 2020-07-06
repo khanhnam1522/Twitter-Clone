@@ -29,7 +29,6 @@ const message = (state=[], action) => {
                     ...state.slice(i+1),
                 ]
             }
-
         default:
             return state;
     }

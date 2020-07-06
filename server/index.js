@@ -23,7 +23,7 @@ app.get("/api/messages", loginRequired, async function(req,res,next){
             .sort({createdAt: "desc"})
             .populate("user", {
                username: true,
-               profileImageUrl: true,
+               profileImageUrl: true
             });
         return res.status(200).json(messages);
     }catch(err){
@@ -32,7 +32,7 @@ app.get("/api/messages", loginRequired, async function(req,res,next){
 });
 
 app.use(function(req,res,next){
-    let err = new Error("Not found")
+    let err = new Error("Not found");
     err.status = 404;
     next(err);
 });

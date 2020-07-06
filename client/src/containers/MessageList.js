@@ -10,7 +10,7 @@ class MessageList extends Component{
     }
     render(){
         const {messages, likeMessage,removeMessage, currentUser} = this.props;
-
+        console.log(messages);
         let messageList = messages.map(m=>( 
             <MessageItem 
                 key={m._id} 
@@ -26,6 +26,7 @@ class MessageList extends Component{
                 isLiked = {m.likedUsers.includes(m.user._id) ? true : false}
                 userID = {m.user._id}
                 messageID = {m._id}
+                comment = {m.comments.length}
             />
         ));
         return (
