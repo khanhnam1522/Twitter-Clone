@@ -8,3 +8,6 @@
   
 2.How to run:
   - The website is deployed on Heroku: https://pacific-brushlands-70952.herokuapp.com/
+  
+3. Demo:
+  - ![](twitterClone.gif)
