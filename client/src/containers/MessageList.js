@@ -19,14 +19,15 @@ class MessageList extends Component{
                 like = {m.like}
                 text={m.text}
                 username={m.user.username}
-                likeMessage = {likeMessage.bind(this, m.user._id, m._id)}
+                likeMessage = {likeMessage.bind(this, currentUser, m._id)}
                 profileImageUrl={m.user.profileImageUrl}
                 removeMessage={removeMessage.bind(this, m.user._id, m._id)}
                 isCorrectUser={currentUser === m.user._id}
-                isLiked = {m.likedUsers.includes(m.user._id) ? true : false}
+                isLiked = {m.likedUsers.includes(currentUser) ? true : false}
                 userID = {m.user._id}
                 messageID = {m._id}
                 comment = {m.comments.length}
+                isComment = {false}
             />
         ));
         return (

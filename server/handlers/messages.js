@@ -81,7 +81,6 @@ exports.postComment = async function(req,res,next){
         let comment = await db.Comment.create({
             text: req.body.text,
             user: req.params.id
-            // message: req.params.message_id
         });
         let foundUser = await db.User.findById(req.params.id);
         let foundMessage = await db.Message.findById(req.params.message_id);

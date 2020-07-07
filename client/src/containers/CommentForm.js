@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {postNewComment} from "../store/actions/messages";
 import CommentList from "../containers/CommentList";
-// import CommentList from "../containers/CommentList";
 
 class CommentForm extends Component {
     constructor(props){
