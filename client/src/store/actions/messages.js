@@ -1,6 +1,6 @@
 import { apiCall } from "../../services/api";
 import {addError} from "./errors";
-import {LOAD_MESSAGES, REMOVE_MESSAGES, LIKE_MESSAGES, LOAD_COMMENTS} from "../actionTypes";
+import {LOAD_MESSAGES, REMOVE_MESSAGES, LIKE_MESSAGES, LOAD_COMMENTS, LOADING} from "../actionTypes";
 
 export const loadMessages = messages => ({
     type: LOAD_MESSAGES,
@@ -20,6 +20,10 @@ export const like = id => ({
 export const loadComments = comment => ({
     type: LOAD_COMMENTS,
     comment
+})
+
+export const loading = () => ({
+    type: LOADING
 })
 
 export const likeMessage = (user_id, message_id) => {
@@ -52,6 +56,8 @@ export const fetchMessages = () => {
 
 export const fetchComments = (message_id,user_id) =>{
     return dispatch => {
+        dispatch(loading()); //Loading starts
+
         return apiCall("get", `/api/users/${user_id}/messages/${message_id}`)
             .then((res) => { 
                 dispatch(loadComments(res));

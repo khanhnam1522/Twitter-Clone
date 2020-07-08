@@ -9,8 +9,10 @@ class MessageList extends Component{
         this.props.fetchMessages();
     }
     render(){
-        const {messages, likeMessage,removeMessage, currentUser} = this.props;
-        console.log(messages);
+        console.log(this.props);
+        const { likeMessage,removeMessage, currentUser} = this.props;
+        const messages = this.props.messages.mess;
+        const isLoading = this.props.messages.loading;
         let messageList = messages.map(m=>( 
             <MessageItem 
                 key={m._id} 
@@ -34,7 +36,10 @@ class MessageList extends Component{
             <div className="row col-8">
                 <div className="offset-1 col-sm-10">
                     <ul className="list-group" id="messages">
-                        {messageList}
+                        {!isLoading ? 
+                            (<div>{messageList}</div>) :
+                            (<div class="circle"></div>)
+                        }
                     </ul>
                 </div>
             </div>

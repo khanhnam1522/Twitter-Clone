@@ -1,33 +1,37 @@
-import {LOAD_MESSAGES, REMOVE_MESSAGES, LIKE_MESSAGES} from "../actionTypes"
+import {LOAD_MESSAGES, REMOVE_MESSAGES, LIKE_MESSAGES, LOADING} from "../actionTypes"
 
-const message = (state=[], action) => {
+const message = (state={loading:true,mess: []}, action) => {
     switch(action.type){
+        case LOADING:
+            return {loading: true};
         case LOAD_MESSAGES:
-            return [...action.messages];
+            return {loading:false, mess:[...action.messages]};
         case REMOVE_MESSAGES:
-            return state.filter(message => message._id !== action.id);
+            return {loading:false, mess: state.mess.filter(message => message._id !== action.id)};
         case LIKE_MESSAGES:
+            console.log(state);
+            console.log(action);
             var i = 0;
-            for(; i < state.length; i++){
-                if (state[i]._id === action.id.message_id){
+            for(; i < state.mess.length; i++){
+                if (state.mess[i]._id === action.id.message_id){
                     break;
                 }
             }
-            if(state[i].likedUsers.includes(action.id.user_id)){
-                var index = state[i].likedUsers.indexOf(action.id.user_id);
-                state[i].likedUsers.splice(index,1);
-                return [
-                    ...state.slice(0,i),
-                    {...state[i], like: state[i].like - 1},
-                    ...state.slice(i+1),
-                ]
+            if(state.mess[i].likedUsers.includes(action.id.user_id)){
+                var index = state.mess[i].likedUsers.indexOf(action.id.user_id);
+                state.mess[i].likedUsers.splice(index,1);
+                return {loading: false, mess:[
+                    ...state.mess.slice(0,i),
+                    {...state.mess[i], like: state.mess[i].like - 1},
+                    ...state.mess.slice(i+1)]
+                }
             } else {
-                state[i].likedUsers.push(action.id.user_id);
-                return [
-                    ...state.slice(0,i),
-                    {...state[i], like: state[i].like + 1},
-                    ...state.slice(i+1),
-                ]
+                state.mess[i].likedUsers.push(action.id.user_id);
+                return { loading:false, mess : [
+                    ...state.mess.slice(0,i),
+                    {...state.mess[i], like: state.mess[i].like + 1},
+                    ...state.mess.slice(i+1)]
+                }
             }
         default:
             return state;

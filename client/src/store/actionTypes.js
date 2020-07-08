@@ -5,3 +5,4 @@ export const LOAD_MESSAGES = "LOAD_MESSAGES";
 export const REMOVE_MESSAGES = "REMOVE_MESSAGES";
 export const LIKE_MESSAGES = "LIKE_MESSAGES";
 export const LOAD_COMMENTS = "LOAD_COMMENTS";
+export const LOADING = "LOADING";
