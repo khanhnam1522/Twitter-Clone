@@ -83,6 +83,6 @@ export const postNewComment = data => (dispatch, getState) => {
     const message_id = data.message_id;
     const text = data.message;
     return apiCall("post", `/api/users/${id}/messages/${message_id}`, {text})
-        .then(res=>{})
+        .then(res=>{dispatch(fetchComments(message_id,id))})
         .catch(err => dispatch(addError(err.message)));
 };

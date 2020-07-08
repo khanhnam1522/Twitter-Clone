@@ -17,7 +17,6 @@ class CommentForm extends Component {
         event.preventDefault();
         this.props.postNewComment(this.state);
         this.setState({message: ""});
-        window.location.reload();
     };
 
     render(){

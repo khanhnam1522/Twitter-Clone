@@ -10,25 +10,18 @@ class CommentList extends Component{
         this.props.fetchComments(this.props.message_id,this.props.user_id);
     }
     render(){
-        console.log(this.props);
         const {comment} = this.props;
-        return(
-            <div>
-                {(comment.length!==0 && (
-                    <MessageItem
-                        text={comment.text}
-                        username={comment.user.username}
-                        profileImageUrl = {comment.user.profileImageUrl}
-                        key={comment._id} 
-                        date={comment.created} 
-                        message_id = {comment._id}
-                        created = {comment.created}
-                        isComment = {true}
-                    />
-                ))}
-                <div className="comments">
-                    {(comment.length!==0 && (
-                        comment.comments.map(c =>(
+        const baseMessage = <MessageItem
+                                text={comment.text}
+                                username={comment.user.username}
+                                profileImageUrl = {comment.user.profileImageUrl}
+                                key={comment._id} 
+                                date={comment.created} 
+                                message_id = {comment._id}
+                                created = {comment.created}
+                                isComment = {true}
+                            />
+        const commentList =  comment.comments.map(c =>(
                             <MessageItem
                                 key = {c._id}
                                 created = {c.created}
@@ -37,8 +30,14 @@ class CommentList extends Component{
                                 text = {c.text}
                                 message_id = {c._id}
                                 isComment = {true}
-                            />))
-                    ))}
+                            />)
+        )
+        return(
+            <div>
+                {baseMessage}
+                <div className="comments">
+                    {commentList}
+
                 </div>
             </div>
         )
