@@ -3,14 +3,12 @@ import {LOAD_MESSAGES, REMOVE_MESSAGES, LIKE_MESSAGES, LOADING} from "../actionT
 const message = (state={loading:true,mess: []}, action) => {
     switch(action.type){
         case LOADING:
-            return {loading: true};
+            return {loading: true, mess:[]};
         case LOAD_MESSAGES:
             return {loading:false, mess:[...action.messages]};
         case REMOVE_MESSAGES:
             return {loading:false, mess: state.mess.filter(message => message._id !== action.id)};
         case LIKE_MESSAGES:
-            console.log(state);
-            console.log(action);
             var i = 0;
             for(; i < state.mess.length; i++){
                 if (state.mess[i]._id === action.id.message_id){

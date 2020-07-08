@@ -10,6 +10,7 @@ class CommentList extends Component{
         this.props.fetchComments(this.props.message_id,this.props.user_id);
     }
     render(){
+        console.log(this.props);
         const {comment} = this.props;
         return(
             <div>

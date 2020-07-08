@@ -9,7 +9,6 @@ class MessageList extends Component{
         this.props.fetchMessages();
     }
     render(){
-        console.log(this.props);
         const { likeMessage,removeMessage, currentUser} = this.props;
         const messages = this.props.messages.mess;
         const isLoading = this.props.messages.loading;
@@ -38,7 +37,7 @@ class MessageList extends Component{
                     <ul className="list-group" id="messages">
                         {!isLoading ? 
                             (<div>{messageList}</div>) :
-                            (<div class="circle"></div>)
+                            (<div className="circle"></div>)
                         }
                     </ul>
                 </div>
