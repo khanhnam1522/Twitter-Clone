@@ -8,7 +8,7 @@
   - Used Bcrypt and JSonWebToken libraries to create a secured authentication system
   
 2.How to run:
-  - The website is deployed on Heroku: https://pacific-brushlands-70952.herokuapp.com/
+  - The website is deployed on Heroku: https://twitter-clone-nt.netlify.app/
   
 3.Demo:
   - ![](twitterClone.gif)
